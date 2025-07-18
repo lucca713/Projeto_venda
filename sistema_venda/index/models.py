@@ -11,8 +11,9 @@ class Fornecedor(models.Model):
 class Produto(models.Model):
     nome = models.CharField(max_length=200)
     valor = models.DecimalField(max_digits=12, decimal_places=2)
-
-    #relacao entre produto e forncedor
+   
+    #relacao entre produto e forncedor -> cria uma tabela nova para essa relacao
+    fornecedores = models.ManyToManyField(Fornecedor)
 
     def __str__(self):
         return f"{self.nome} - R${self.valor}"
@@ -42,4 +43,15 @@ class Venda(models.Model):
         return f"venda {self.id} - {self.Comprador.nome}" #pega o nome por conta da ForeignKey
 
 class Itemvenda(models.Model):
+    #relacao de venda e produto, o mesmo produto pode ter varias vendas
+
+    venda = models.ForeignKey(Venda, related_name='itens', on_delete=models.CASCADE)#tudo filtrado pelo itens.all()
+    produto = models.ForeignKey(Produto, on_delete=models.PROTECT)
+    quantidade = models.PositiveBigIntegerField(default=1)
+
+    #preco produto na hora da venda(para manter o historico correto)
+    preco_unitario = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return f"{self.quantidade} x {self.produto.nome} na venda {self.venda.id}"
     
