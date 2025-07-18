@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "index",
 ]
 
 MIDDLEWARE = [
@@ -72,10 +73,15 @@ WSGI_APPLICATION = 'sistema_venda.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+#INFO DO BANCO DE DADOS LOCAL 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sistema_vendas',
+        'USER': 'postgres',
+        'PASSWORD':'1234',
+        'HOST':'localhost',
+        'PORT':'5432'
     }
 }
 
