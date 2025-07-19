@@ -4,11 +4,11 @@ from .models import Comprador, Produto
 def nova_venda(request):
     #passar produto e comprador para poder listar no select
     compradores = Comprador.objects.all()
-    produto = Produto.objects.all()
+    produtos = Produto.objects.all()
 
     context = {
         'compradores': compradores,
-        'produto': produto
+        'produtos': produtos
     }
 
-    return render(request, './nova_venda', context) #arrumar esse caminho dps
+    return render(request, './nova_venda.html', context) #arrumar esse caminho dps
