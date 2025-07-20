@@ -8,6 +8,7 @@ def get_mongo_collection():
         client = pymongo.MongoClient(settings.MONGO_CONNECTION_STRING)
         db = client[settings.MONGO_DATABASE_NAME]
         collection = db[settings.MONGO_COLLECTION_NAME]
+
     # Testa se a conexão está ativa
         client.admin.command('ping') 
         print("Conexão com MongoDB bem-sucedida.")
@@ -15,6 +16,7 @@ def get_mongo_collection():
     except Exception as e:
         print(f"conexao falhou :(")
         return None
+    
 # Vai receber do nova_venda e coloar em um json para conseguir colocar no mongoDB
 def salvar_venda_no_mongo(venda_obj_sql):
 
@@ -40,7 +42,7 @@ def salvar_venda_no_mongo(venda_obj_sql):
         "itens": []
     }
 
-    #  adiciona no dicionario
+    # adiciona no dicionario
 
     for item_sql in venda_obj_sql.itens.all():
         venda_documento["itens"].append({

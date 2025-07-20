@@ -129,12 +129,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #-------------------------- MONGO DB
 
-# Cole sua Connection String do MongoDB Atlas aqui.
-# Lembre-se de substituir <password> pela senha que você criou e <username> pelo usuário.
+
 MONGO_CONNECTION_STRING = "mongodb+srv://lucca:1234@historico.lhdud1v.mongodb.net/?retryWrites=true&w=majority&appName=Historico"
 
-# Nome Banco
+
 MONGO_DATABASE_NAME = "historico_vendas_db"
 
-# Nome da tabela 
 MONGO_COLLECTION_NAME = "vendas"

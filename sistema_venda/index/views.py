@@ -104,7 +104,7 @@ def pagina_sucesso(request):
                     
                 
 def lista_produto(request):
-    # Pegar o q da query, depois do "q" vai estar o produto na url
+    
     query = request.GET.get('q')
 
     if query:
