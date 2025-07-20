@@ -2,10 +2,21 @@ from django.shortcuts import render, redirect
 from django.shortcuts import render, get_object_or_404 #para retornar o erro
 from django.db import transaction
 from .models import Comprador, Produto, Venda, Itemvenda
+from . import utils
 import json
+
 #configurando os dados enviados para o banco
+def index(request):
+     return render(request,'./index.html')
+    
+
+
 def nova_venda(request):
+    
     if request.method == 'POST':
+
+        # Iniciando variavel que vai guardar a venda feita para copiar do Postegre para o Mongo
+        venda_salva_sql = None
 
         #processa o formulario 
         try:
@@ -47,13 +58,24 @@ def nova_venda(request):
                     )
                     subtotal_calculado += float(item_data['subtotal'])
                 
+                # A VENDA VAI GUARDAR EM AMBOS OS BANCOS
+                
                 #atualizar o subtotal da venda
                 venda.subtotal = subtotal_calculado
                 venda.save()
 
+                # Guardando Venda nela
+                venda_salva_sql = venda
+
+            if venda_salva_sql:
+                try:
+                    utils.salvar_venda_no_mongo(venda_salva_sql)
+                except Exception as e:
+                    print('nao deu certo salvar no mongoDB :( {e}') 
+               
             #levar para a página de sucesso
             return redirect('sucesso')
-        
+
         except Exception as e:
             print(f"Erro ao processar a venda: {e}")
 
@@ -94,7 +116,51 @@ def lista_produto(request):
 
     return render(request, './lista_produtos.html', {'produtos': produto})
 
+#Somente o mongo vai receber o historico 
 
+def historico_compras(request, comprador_id):
+   
+    comprador = get_object_or_404(Comprador, id=comprador_id)
+    vendas_do_mongo = []
+    
+    collection = utils.get_mongo_collection()
+    
+    if collection is not None:
+        
+        cursor = collection.find(
+            {'comprador_id': comprador_id}
+        ).sort('data_venda', -1)
+        
+        vendas_do_mongo = list(cursor)
+
+    context = {
+        'comprador': comprador,
+        'vendas': vendas_do_mongo
+    }
+    return render(request, './historico_compras.html', context)
+
+def lista_clientes(request):
+    #pegar todos os clientes
+
+    comprador = Comprador.objects.all().order_by('nome')
+    context = {
+        'compradores':comprador,
+    }
+    return render(request,'./lista_clientes.html', context)
+
+def lista_clientes_only(request):
+    #pegar todos os clientes
+
+    comprador = Comprador.objects.all().order_by('nome')
+    context = {
+        'compradores':comprador,
+    }
+    return render(request,'./lista_clientes_only.html', context)
+
+
+
+
+'''
 def historico_compras(request, comprador_id):
     comprador = get_object_or_404(Comprador, id= comprador_id)
 
@@ -107,6 +173,6 @@ def historico_compras(request, comprador_id):
         'vendas': vendas,
     }
     return render(request, './historico_compras.html', context)
-
+'''
 
 

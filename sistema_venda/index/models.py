@@ -26,6 +26,7 @@ class Comprador(models.Model):
         return self.nome    
     
 class Venda(models.Model):
+    
     comprador = models.ForeignKey(Comprador, on_delete=models.PROTECT)
     data_venda = models.DateTimeField(auto_now=True)
 

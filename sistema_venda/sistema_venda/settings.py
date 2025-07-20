@@ -108,9 +108,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
@@ -126,3 +126,15 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#-------------------------- MONGO DB
+
+# Cole sua Connection String do MongoDB Atlas aqui.
+# Lembre-se de substituir <password> pela senha que você criou e <username> pelo usuário.
+MONGO_CONNECTION_STRING = "mongodb+srv://lucca:1234@historico.lhdud1v.mongodb.net/?retryWrites=true&w=majority&appName=Historico"
+
+# Nome Banco
+MONGO_DATABASE_NAME = "historico_vendas_db"
+
+# Nome da tabela 
+MONGO_COLLECTION_NAME = "vendas"

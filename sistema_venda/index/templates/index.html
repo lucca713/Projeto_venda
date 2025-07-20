@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo ao Sistema de Vendas</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'index/meuCss.css' %}">
+</head>
+<body class="bg-gray-900">
+
+   
+    
+    <div class="relative min-h-screen flex items-center justify-center p-6 overflow-hidden">
+        
+        
+        <div class="absolute top-0 left-1/3 w-96 h-96 bg-purple-600 rounded-full mix-blend-lighten filter blur-3xl opacity-20 animate-pulse"></div>
+        <div class="absolute top-0 right-1/3 w-96 h-96 bg-indigo-600 rounded-full mix-blend-lighten filter blur-3xl opacity-20 animate-pulse animation-delay-2000"></div>
+
+     
+        
+        <div class="relative text-center z-10">
+            
+          
+            
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-white animate-fade-in-down">
+                Sistema de Gestão
+            </h1>
+            
+         
+            
+            <p class="mt-4 text-lg md:text-xl text-indigo-200 max-w-2xl mx-auto animate-fade-in-up delay-1">
+                Acesse a área desejada para gerenciar suas vendas ou consultar seu histórico de compras.
+            </p>
+
+           
+            
+            <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-6 animate-fade-in-up delay-2">
+                
+                
+                
+                <a href="{% url 'nova_venda' %}" class="group flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-purple-300">
+                   
+                    
+                    <svg class="w-6 h-6 transition-transform duration-300 group-hover:rotate-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h2.64m-13.5 0L12 14.25m-2.64 0L12 14.25m-8.64 6.75L12 14.25m-2.64 0L12 14.25m6.36 6.75L12 14.25m-2.64 0L12 14.25M2.36 21m11.14 0c0-2.224 1.14-4.243 2.857-5.5" />
+                    </svg>
+                    <span>Área da Loja</span>
+                </a>
+
+               
+                
+                <a href="{% url 'lista_clientes_only' %}" class="group flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 bg-gray-700 text-white font-semibold rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105 hover:bg-gray-600 focus:outline-none focus:ring-4 focus:ring-gray-500">
+                    
+                    <svg class="w-6 h-6 transition-transform duration-300 group-hover:-rotate-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                    </svg>
+                    <span>Área do Cliente</span>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

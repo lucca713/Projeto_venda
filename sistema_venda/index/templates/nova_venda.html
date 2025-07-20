@@ -101,6 +101,10 @@
             <input type="hidden" name="itens_venda" id="itens_venda_input">
 
             <button type="submit" class="btn btn-success btn-lg mt-3 w-100">Finalizar Venda</button>
+            <br>
+             <a style="background-color:red;" href="{% url 'lista_produtos' %}" class="btn btn-success btn-lg mt-3 w-100">Pesquisar produtos disponiveis no estoque</a>
+             <br>
+             <a style="background-color:black;" href="{% url 'lista_clientes' %}" class="btn btn-success btn-lg mt-3 w-100">Pesquisar pro cliente</a>
 
         </form>
     </div>
