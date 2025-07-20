@@ -87,12 +87,12 @@ def lista_produto(request):
 
     if query:
         # Filtrar produto
-        Produto = Produto.objects.filter(nome__icontains=query)
+        produto = Produto.objects.filter(nome__icontains=query)
     else:
         #lista todos se nao tiver
-        Produto = Produto.objects.all()
+        produto = Produto.objects.all()
 
-    return render(request, './lista_produtos.html', {'produtos': Produto})
+    return render(request, './lista_produtos.html', {'produtos': produto})
 
 
 def historico_compras(request, comprador_id):
