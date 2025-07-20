@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('index.urls')), #pq nao colocar index /?
+    path('', include('index.urls')), #levar para o idex, de la eu gerencio as outras Urls
 ]
 
 #para funcionar arquivo estatico js fora do html, pasta statics

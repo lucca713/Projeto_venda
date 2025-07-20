@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404 #para retornar o erro
 from django.db import transaction
 from .models import Comprador, Produto, Venda, Itemvenda
 import json
@@ -59,7 +60,7 @@ def nova_venda(request):
             #recarregar a pagina para corrigir
 
             compradores = Comprador.objects.all()
-            produto= Produto.objects.all()
+            produtos = Produto.objects.all()
             context = {
                 'compradores': compradores,
                 'produtos': produtos,
@@ -76,9 +77,36 @@ def nova_venda(request):
         return render(request, './nova_venda.html', context)
 
 
+def pagina_sucesso(request):
+    return render(request, './sucesso.html')
                     
                 
+def lista_produto(request):
+    # Pegar o q da query, depois do "q" vai estar o produto na url
+    query = request.GET.get('q')
 
+    if query:
+        # Filtrar produto
+        Produto = Produto.objects.filter(nome__icontains=query)
+    else:
+        #lista todos se nao tiver
+        Produto = Produto.objects.all()
+
+    return render(request, './lista_produtos.html', {'produtos': Produto})
+
+
+def historico_compras(request, comprador_id):
+    comprador = get_object_or_404(Comprador, id= comprador_id)
+
+    #Filtrar venda pelo mais recente
+
+    vendas = Venda.objects.filter(comprador=comprador).order_by('-data_venda')
+
+    context = {
+        'comprador':  comprador,
+        'vendas': vendas,
+    }
+    return render(request, './historico_compras.html', context)
 
 
 
