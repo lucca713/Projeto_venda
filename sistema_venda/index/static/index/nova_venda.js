@@ -1,3 +1,4 @@
+console.log("Carregou o js");
 document.addEventListener('DOMContentLoaded', function(){
     //API ViaCep
     const cepInput = document.getElementById("cep")
@@ -12,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function(){
             fetch(`https://viacep.com.br/ws/${cep}/json/`)
             .then(response => response.json())
             .then(data =>{
-                if(!data.error){
+                if(!data.erro){
 
                     console.log("passou aqui")
 
@@ -38,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function(){
     const quantidadeInput = document.getElementById("quantidade")
     const tabelaItens = document.getElementById("tabela-itens")
     const subtotalVenda = document.getElementById("subtotal-venda")
-    const itensVendaInput = document.getElementById("subtotal-venda")
+    const itensVendaInput = document.getElementById("itens_venda_input")
     
     let itensDaVenda = [] 
 
