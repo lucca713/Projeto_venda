@@ -14,7 +14,7 @@
         <div class="card mb-4 shadow-sm">
             <div class="card-header d-flex justify-content-between">
                 <!-- Acessando a chave do dicionário do Mongo -->
-                <strong>Venda (ID no sistema antigo: #{{ venda.venda_id_sql }})</strong>
+                <strong>Venda (ID : #{{ venda.venda_id_sql }})</strong>
 
                 <!--  objeto de data do pymongo, ja vai definir a data e hora -->
                 <span>Data: {{ venda.data_venda|date:"d/m/Y H:i" }}</span>
