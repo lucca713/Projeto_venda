@@ -1,3 +1,7 @@
+#video com casos de teste -> explicacao do sistema:
+
+Link:  https://www.youtube.com/watch?v=SOh67tcCRNM
+
 # Sistema de Gestão de Vendas com Django, PostgreSQL e MongoDB
 
 Este projeto foi desenvolvido como um desafio técnico para demonstrar habilidades em desenvolvimento web full-stack com Python e Django. A aplicação consiste em um sistema de vendas simples, mas robusto, que permite o registro de transações, consulta de produtos e visualização de histórico de compras dos clientes.
